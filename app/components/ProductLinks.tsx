@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { X } from "lucide-react";
 import { siteConfig } from "../data/siteConfig";
+import { getAssetPath } from "../utils/pathUtils";
 
 export default function ProductLinks() {
   const { productLinks } = siteConfig;
@@ -41,7 +42,7 @@ export default function ProductLinks() {
               </div>
             )}
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 justify-items-center">
               {productLinks.products.map((product) => (
                 <button
                   key={product.id}
@@ -55,7 +56,7 @@ export default function ProductLinks() {
                   <div className="relative w-full aspect-[4/3] max-w-[280px] md:max-w-[320px] lg:max-w-[360px] xl:max-w-[400px] mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto bg-transparent">
                     {hoveredProduct === product.id && product.gifSrc ? (
                       <Image
-                        src={product.gifSrc}
+                        src={getAssetPath(product.gifSrc)}
                         alt={product.name}
                         fill
                         className="object-contain bg-transparent"
@@ -63,7 +64,7 @@ export default function ProductLinks() {
                       />
                     ) : (
                       <Image
-                        src={product.imageSrc}
+                        src={getAssetPath(product.imageSrc)}
                         alt={product.name}
                         fill
                         className="object-contain bg-transparent"
@@ -109,7 +110,7 @@ export default function ProductLinks() {
               <div className="text-center mb-8">
                 <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-6">
                   <Image
-                    src={selectedProductData.imageSrc}
+                    src={getAssetPath(selectedProductData.imageSrc)}
                     alt={selectedProductData.name}
                     fill
                     className="object-contain"
@@ -144,7 +145,7 @@ export default function ProductLinks() {
                       {link.image && (
                         <div className="relative w-16 h-16 md:w-20 md:h-20 mb-3 group-hover:scale-110 transition-transform duration-300">
                           <Image
-                            src={link.image}
+                            src={getAssetPath(link.image)}
                             alt={link.name}
                             fill
                             className="object-contain"
