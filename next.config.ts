@@ -31,6 +31,10 @@ const nextConfig: NextConfig = {
     // Disable image optimization for static export (required for GitHub Pages)
     unoptimized: process.env.GITHUB_PAGES === 'true',
   },
+  // Expose basePath to client-side code
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 
 export default nextConfig;
