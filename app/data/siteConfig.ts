@@ -301,6 +301,29 @@ export const siteConfig = {
   },
 
   // Product Links with Third-Party Ordering (Products with GIFs on hover, popup with links)
+  // Third Party Links Configuration (for ThirdPartyLinks component)
+  thirdPartyLinks: {
+    active: false, // Set to false to hide this section
+    title: "Order Now",
+    subtitle: "Available on these platforms",
+    links: [
+      {
+        id: "zepto",
+        name: "Zepto",
+        url: "https://www.zepto.com",
+        image: "/assets/zepto-logo.png",
+        unoptimized: false,
+      },
+      {
+        id: "flipkart",
+        name: "Flipkart",
+        url: "https://www.flipkart.com",
+        image: "/assets/flipkart-logo.png",
+        unoptimized: false,
+      },
+    ],
+  },
+
   productLinks: {
     active: true, // Set to false to hide this section
     title: "Order Now",

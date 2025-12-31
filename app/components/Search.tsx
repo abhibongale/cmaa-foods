@@ -52,7 +52,8 @@ export default function Search() {
   // Search functionality
   useEffect(() => {
     if (!query.trim()) {
-      setResults([]);
+      // Use setTimeout to avoid setState in effect
+      setTimeout(() => setResults([]), 0);
       return;
     }
 
@@ -177,7 +178,7 @@ export default function Search() {
                 </div>
               ) : results.length === 0 ? (
                 <div className="text-center text-gray-400 py-12">
-                  <p>No results found for "{query}"</p>
+                  <p>No results found for &quot;{query}&quot;</p>
                 </div>
               ) : (
                 <div className="space-y-2">

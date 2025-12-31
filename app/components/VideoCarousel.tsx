@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import Image from "next/image";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import HeroVideo from "./HeroVideo";
@@ -39,7 +38,6 @@ export default function VideoCarousel({
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [isPaused, setIsPaused] = useState(false);
   const [videoDurations, setVideoDurations] = useState<Map<number, number>>(new Map());
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const currentVideo = videos[currentIndex];

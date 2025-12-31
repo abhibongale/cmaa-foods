@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Star, AlertCircle, Check, Info } from 'lucide-react';
-import clsx from 'clsx';
+// import clsx from 'clsx'; // Unused import
 
 export default function ProductPage() {
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
@@ -105,7 +105,7 @@ export default function ProductPage() {
 
           {/* Short Description */}
           <blockquote className="border-l-4 border-[#D97706] pl-4 italic text-gray-600 bg-white/50 p-4 rounded-r-lg">
-            "Thin poha is for diet. Thick poha is for emotion. We use the thickest Dagadi Poha, fried to a golden crisp that snaps loud enough to wake up your neighbors."
+            &quot;Thin poha is for diet. Thick poha is for emotion. We use the thickest Dagadi Poha, fried to a golden crisp that snaps loud enough to wake up your neighbors.&quot;
           </blockquote>
 
           {/* Add to Cart Section */}

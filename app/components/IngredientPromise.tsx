@@ -37,10 +37,6 @@ export default function IngredientPromise({
 
   const selectedProduct = products.find((p) => p.id === selectedProductId) || products[0];
 
-  if (!selectedProduct) {
-    return null;
-  }
-
   // Handle 3D movement on hotspot hover - 100 degree rotation
   const handleHotspotMouseEnter = useCallback(() => {
     // Rotate 100 degrees on Y-axis
@@ -51,6 +47,10 @@ export default function IngredientPromise({
     // Reset to 0 degrees
     setImageTransform({ rotateX: 0, rotateY: 0 });
   }, []);
+
+  if (!selectedProduct) {
+    return null;
+  }
 
   return (
     <div className="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden h-full">

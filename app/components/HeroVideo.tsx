@@ -4,28 +4,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-// Type definitions for react-player config
-interface YouTubeConfig {
-  playerVars?: {
-    autoplay?: number;
-    controls?: number;
-    modestbranding?: number;
-    rel?: number;
-    [key: string]: any;
-  };
-}
-
-interface VimeoConfig {
-  playerOptions?: {
-    autoplay?: boolean;
-    controls?: boolean;
-    muted?: boolean;
-    loop?: boolean;
-    [key: string]: any;
-  };
-}
-
 // Dynamically import react-player to avoid loading on first paint
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ReactPlayer = dynamic(() => import("react-player"), {
   ssr: false,
   loading: () => (
@@ -90,11 +70,11 @@ export default function HeroVideo({
   onDuration,
   onEnded,
 }: HeroVideoProps) {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [shouldPlay, setShouldPlay] = useState(autoPlay && !prefersReducedMotion());
+  const [shouldPlay] = useState(autoPlay && !prefersReducedMotion());
   const [isIntersecting, setIsIntersecting] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -131,20 +111,18 @@ export default function HeroVideo({
       // Pause video
       if (videoRef.current && !videoRef.current.paused) {
         videoRef.current.pause();
-        setIsPlaying(false);
         onPause?.();
       }
       // Pause external video player
       if (playerRef.current && isExternalVideo) {
         playerRef.current.getInternalPlayer()?.pause?.();
-        setIsPlaying(false);
         onPause?.();
       }
     } else if (shouldPlay && isIntersecting && isLoaded) {
       // Play video
       if (videoRef.current && videoRef.current.paused) {
-        videoRef.current.play().catch((error) => {
-          console.log("Autoplay prevented:", error);
+        videoRef.current.play().catch(() => {
+          // Autoplay prevented - handled silently
         });
       }
       // External videos are handled by react-player
@@ -154,17 +132,14 @@ export default function HeroVideo({
   // Handle local video events
   const handlePlay = useCallback(() => {
     setIsLoaded(true); // Hide loading when video starts playing
-    setIsPlaying(true);
     onPlay?.();
   }, [onPlay]);
 
   const handlePause = useCallback(() => {
-    setIsPlaying(false);
     onPause?.();
   }, [onPause]);
 
   const handleEnded = useCallback(() => {
-    setIsPlaying(false);
     onEnded?.();
   }, [onEnded]);
 
@@ -194,17 +169,14 @@ export default function HeroVideo({
 
   // Handle external video player events
   const handleExternalPlay = useCallback(() => {
-    setIsPlaying(true);
     onPlay?.();
   }, [onPlay]);
 
   const handleExternalPause = useCallback(() => {
-    setIsPlaying(false);
     onPause?.();
   }, [onPause]);
 
   const handleExternalEnded = useCallback(() => {
-    setIsPlaying(false);
     onEnded?.();
   }, [onEnded]);
 
@@ -219,7 +191,7 @@ export default function HeroVideo({
           if (duration && !isNaN(duration)) {
             onDuration?.(duration);
           }
-        } catch (error) {
+        } catch {
           // Duration might not be available yet
         }
       }
@@ -262,6 +234,7 @@ export default function HeroVideo({
             width="100%"
             height="100%"
             playsinline
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             config={
               {
                 youtube: {

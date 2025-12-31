@@ -15,9 +15,9 @@ export default function Hero() {
   const videos = hero.video?.videos || [];
   const carouselSettings = hero.video?.carouselSettings;
 
-  // Check if source is a GIF
-  const isGif = (gifSrc && typeof gifSrc === "string" && gifSrc.endsWith(".gif")) || 
-                (videoSrc && typeof videoSrc === "string" && videoSrc.endsWith(".gif"));
+  // Check if source is a GIF (currently unused but kept for future use)
+  // const isGif = (gifSrc && typeof gifSrc === "string" && gifSrc.endsWith(".gif")) || 
+  //               (videoSrc && typeof videoSrc === "string" && videoSrc.endsWith(".gif"));
 
   // Determine what to render
   const renderContent = () => {
