@@ -33,7 +33,7 @@ const ReactPlayer = dynamic(() => import("react-player"), {
       <div className="w-16 h-16 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
     </div>
   ),
-});
+}) as any; // Type assertion to fix TypeScript issues with dynamic import
 
 interface HeroVideoProps {
   // Video source - can be local file, YouTube, or Vimeo URL
