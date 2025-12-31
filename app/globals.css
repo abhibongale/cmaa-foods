@@ -29,8 +29,8 @@ body {
 
 :root {
   --foreground-rgb: 74, 74, 74;
-  --background-start-rgb: 253, 251, 247; /* Creamy White */
-  --background-end-rgb: 253, 251, 247;
+  --background-start-rgb: 245, 240, 232; /* Darker Earthy Beige */
+  --background-end-rgb: 245, 240, 232;
 }
 
 /* Custom Font Utilities if needed, though Tailwind config is better */

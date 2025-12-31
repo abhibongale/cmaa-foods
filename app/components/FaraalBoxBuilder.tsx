@@ -57,11 +57,11 @@ export default function FaraalBoxBuilder() {
   };
 
   return (
-    <div className="bg-[#FDFBF7] rounded-2xl border border-[#F5E6D3] shadow-lg overflow-hidden h-full">
-      <div className="p-6 md:p-8">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#8B4513] mb-2">{faraalBox.title}</h2>
-          <p className="text-gray-600 text-sm">
+    <div className="bg-[#FDFBF7] rounded-3xl border border-[#F5E6D3] shadow-xl overflow-hidden h-full">
+      <div className="p-10 md:p-16">
+        <div className="text-center mb-10 md:mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-[#8B4513] mb-4">{faraalBox.title}</h2>
+          <p className="text-gray-600 text-base md:text-lg">
             {faraalBox.description}
           </p>
         </div>

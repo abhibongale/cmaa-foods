@@ -33,16 +33,16 @@ export default function InfoCard({
   const isImageLeft = imagePosition === "left";
   const isClickable = clickable && href;
 
-  // Adjust sizes based on compact mode
-  const paddingClass = compact ? "p-6 md:p-8" : "p-10 md:p-16";
-  const sloganClass = compact ? "text-sm md:text-base" : "text-base md:text-lg";
+  // Adjust sizes based on compact mode - Made larger
+  const paddingClass = compact ? "p-10 md:p-12 lg:p-16" : "p-12 md:p-16 lg:p-20";
+  const sloganClass = compact ? "text-base md:text-lg" : "text-lg md:text-xl lg:text-2xl";
   const titleClass = compact 
-    ? "text-2xl md:text-3xl lg:text-4xl" 
-    : "text-4xl md:text-5xl lg:text-6xl";
+    ? "text-3xl md:text-4xl lg:text-5xl" 
+    : "text-5xl md:text-6xl lg:text-7xl";
   const descClass = compact 
-    ? "text-base md:text-lg" 
-    : "text-xl md:text-2xl";
-  const imageMinHeight = compact ? "md:min-h-[300px]" : "md:min-h-[500px]";
+    ? "text-lg md:text-xl" 
+    : "text-xl md:text-2xl lg:text-3xl";
+  const imageMinHeight = compact ? "md:min-h-[400px]" : "md:min-h-[600px]";
 
   const CardContent = (
     <div className={`${backgroundColor} rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 shadow-xl h-full ${isClickable ? 'cursor-pointer hover:shadow-2xl hover:scale-[1.02] transition-all duration-300' : ''}`}>

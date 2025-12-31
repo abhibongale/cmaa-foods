@@ -23,6 +23,52 @@ export const siteConfig = {
     description: "High resolution photograph breaking chakli with Besan and traditional spices. Hand-crafted in Kothrud with authentic recipes passed down through generations.",
     image: "/assets/chakali.png",
     imageAlt: "Chakli - Traditional Indian Snack",
+    // Hero Video/GIF Configuration
+    video: {
+      active: true, // Set to true to use video/GIF instead of image
+      // Single video (legacy support)
+      videoSrc: "/assets/chivda-toss.mp4", // Local video, YouTube, or Vimeo URL
+      gifSrc: undefined, // Optional: Path to GIF file (e.g., "/assets/hero-animation.gif")
+      posterImage: "/assets/chakali-homepage.png", // Fallback image before video loads
+      posterImageAlt: "Chakli video poster",
+      autoPlay: true,
+      loop: true,
+      muted: true,
+      videoType: "local" as "local" | "youtube" | "vimeo" | undefined, // Auto-detected if undefined
+      ariaLabel: "Welcome video showcasing our traditional snacks",
+      // Multiple videos (carousel)
+      useCarousel: true, // Set to true to use video carousel
+      videos: [
+        {
+          videoSrc: "/assets/chivda-toss.mp4",
+          //posterImage: "/assets/chakali-homepage.png",
+          posterImageAlt: "Chivda toss video",
+          videoType: "local" as "local" | "youtube" | "vimeo" | undefined,
+          ariaLabel: "Chivda toss preparation",
+        },
+        {
+          videoSrc: "/assets/chivda-mix.mp4", // Replace with your second video
+         // posterImage: "/assets/chakali-homepage.png",
+          posterImageAlt: "Second video poster",
+          videoType: "local" as "local" | "youtube" | "vimeo" | undefined,
+          ariaLabel: "Second video",
+        },
+        {
+          videoSrc: "/assets/chakali1.mp4", // Replace with your third video
+          //posterImage: "/assets/chakali-homepage.png",
+          posterImageAlt: "Third video poster",
+          videoType: "local" as "local" | "youtube" | "vimeo" | undefined,
+          ariaLabel: "Third video",
+        },
+      ],
+      carouselSettings: {
+        autoPlay: true,
+        autoAdvance: true, // Auto-advance to next video while looping
+        autoAdvanceDelay: 10, // Delay in seconds before advancing to next video (10 seconds per video)
+        showControls: true, // Show navigation controls
+        loop: true, // Loop videos by default
+      },
+    },
   },
 
   // Faraal Box Builder Configuration
@@ -32,37 +78,13 @@ export const siteConfig = {
     maxCapacity: 4, // Maximum number of items in the box
     snacks: [
       {
-        id: "1",
-        name: "Yellow Chivda",
-        price: 120,
-        quantity: "1 kg",
-        color: "bg-yellow-100",
-        image: "/assets/chivda.jpg",
-      },
-      {
         id: "2",
         name: "Bhajani Chakli",
         price: 150,
         quantity: "1 kg",
         color: "bg-orange-100",
         image: "/assets/chakali.png",
-      },
-      {
-        id: "3",
-        name: "Shankar Pali",
-        price: 100,
-        quantity: "1 kg",
-        color: "bg-red-50",
-        image: "/assets/shankarpali.jpg",
-      },
-      {
-        id: "4",
-        name: "Besan Ladoo",
-        price: 180,
-        quantity: "1 kg",
-        color: "bg-amber-100",
-        image: "/assets/ladoo.jpg",
-      },
+      }
       // Add more snacks here as needed
     ],
   },
@@ -94,33 +116,71 @@ export const siteConfig = {
   ingredientPromise: {
     active: true,
     title: "OUR INGREDIENT PROMISE",
-    subtitle: "Slow ingredients for that homely taste.",
-    imageSrc: "/assets/chakali.png",
-    imageAlt: "Chakli with ingredient hotspots",
-    hotspots: [
+    subtitle: "Homemade healthy mother's recipe at your doorstep, just like you remember it.",
+    // Multiple products with their ingredient promises
+    products: [
       {
-        id: "besan",
-        label: "Besan from Latur",
-        description: "Premium gram flour sourced directly from Latur",
-        top: "35%",
-        left: "25%",
+        id: "chakli",
+        name: "Chakli",
+        imageSrc: "/assets/chakali.png",
+        imageAlt: "Chakli with ingredient hotspots",
+        hotspots: [
+          {
+            id: "besan",
+            label: "Besan from Latur",
+            description: "Premium gram flour sourced directly from Latur",
+            top: "35%",
+            left: "25%",
+          },
+          {
+            id: "masala",
+            label: "Home-ground Masala",
+            description: "Freshly ground spices in our kitchen",
+            top: "25%",
+            left: "65%",
+          },
+          {
+            id: "oil",
+            label: "Pure Groundnut Oil",
+            description: "100% pure groundnut oil for authentic taste",
+            top: "60%",
+            left: "50%",
+          },
+        ],
       },
       {
-        id: "masala",
-        label: "Home-ground Masala",
-        description: "Freshly ground spices in our kitchen",
-        top: "25%",
-        left: "65%",
+        id: "chivda",
+        name: "Chivda",
+        imageSrc: "/assets/chivda.jpg",
+        imageAlt: "Chivda with ingredient hotspots",
+        hotspots: [
+          {
+            id: "poha",
+            label: "Premium Poha",
+            description: "High-quality flattened rice from local farms",
+            top: "30%",
+            left: "30%",
+          },
+          {
+            id: "nuts",
+            label: "Fresh Nuts",
+            description: "Cashews, peanuts, and almonds",
+            top: "45%",
+            left: "70%",
+          },
+          {
+            id: "spices-chivda",
+            label: "Traditional Spices",
+            description: "Curry leaves, mustard seeds, and turmeric",
+            top: "65%",
+            left: "50%",
+          },
+        ],
       },
-      {
-        id: "oil",
-        label: "Pure Groundnut Oil",
-        description: "100% pure groundnut oil for authentic taste",
-        top: "60%",
-        left: "50%",
-      },
-      // Add more hotspots as needed
+      // Add more products as needed
     ],
+    // Default product to show (can be changed dynamically)
+    defaultProductId: "chakli",
   },
 
   // Why Puneri Section
@@ -238,6 +298,126 @@ export const siteConfig = {
     bottomBar: {
       message: "Fresh batch fried this morning in Kothrud • Delivering to Wakad, Baner, and Aundh",
     },
+  },
+
+  // Product Links with Third-Party Ordering (Products with GIFs on hover, popup with links)
+  productLinks: {
+    active: true, // Set to false to hide this section
+    title: "Order Now",
+    subtitle: "Click on any product to see where you can order it",
+    products: [
+      {
+        id: "chivda",
+        name: "Gharcha Chivda",
+        imageSrc: "/assets/chivda_product.png", // Static image
+        gifSrc: "/assets/chivda_animation.gif", // GIF that plays on hover
+        description: "Crispy and flavorful traditional snack mix",
+        unoptimized: false,
+        thirdPartyLinks: [
+          {
+            id: "zepto-chivda",
+            name: "Zepto",
+            url: "https://www.zepto.com/product/chivda", // Replace with actual product link
+            image: "/assets/zepto-logo.png",
+            unoptimized: false,
+          },
+          {
+            id: "flipkart-chivda",
+            name: "Flipkart",
+            url: "https://www.flipkart.com/product/chivda", // Replace with actual product link
+            image: "/assets/flipkart-logo.png",
+            unoptimized: false,
+          },
+          {
+            id: "amazon-chivda",
+            name: "Amazon",
+            url: "https://www.amazon.in/product/chivda", // Replace with actual product link
+            image: "/assets/amazon-logo.png",
+            unoptimized: false,
+          },
+        ],
+      },
+      {
+        id: "chakli",
+        name: "Crunchy Chakli",
+        imageSrc: "/assets/chivda_product.png",
+        gifSrc: "/assets/chakli-animation.gif", // GIF that plays on hover
+        description: "Spiral-shaped crispy snack made with besan",
+        unoptimized: false,
+        thirdPartyLinks: [
+          {
+            id: "zepto-chakli",
+            name: "Zepto",
+            url: "https://www.zepto.com/product/chakli",
+            image: "/assets/zepto-logo.png",
+            unoptimized: false,
+          },
+          {
+            id: "flipkart-chakli",
+            name: "Flipkart",
+            url: "https://www.flipkart.com/product/chakli",
+            image: "/assets/flipkart-logo.png",
+            unoptimized: false,
+          },
+          {
+            id: "amazon-chakli",
+            name: "Amazon",
+            url: "https://www.amazon.in/product/chakli",
+            image: "/assets/amazon-logo.png",
+            unoptimized: false,
+          },
+        ],
+      },
+      {
+        id: "Kurkure",
+        name: "Kurkure",
+        imageSrc: "/assets/kurkure.jpg",
+        gifSrc: "/assets/kurkure-animation.gif",
+        description: "Sweet and savory diamond-shaped snack",
+        unoptimized: false,
+        thirdPartyLinks: [
+          {
+            id: "zepto-shankarpali",
+            name: "Zepto",
+            url: "https://www.zepto.com/product/kurkure",
+            image: "/assets/zepto-logo.png",
+            unoptimized: false,
+          },
+          {
+            id: "flipkart-shankarpali",
+            name: "Flipkart",
+            url: "https://www.flipkart.com/product/kurkure",
+            image: "/assets/flipkart-logo.png",
+            unoptimized: false,
+          },
+        ],
+      },
+      {
+        id: "ladoo",
+        name: "Besan Ladoo",
+        imageSrc: "/assets/ladoo.jpg",
+        gifSrc: "/assets/ladoo-animation.gif",
+        description: "Sweet gram flour balls with ghee",
+        unoptimized: false,
+        thirdPartyLinks: [
+          {
+            id: "zepto-ladoo",
+            name: "Zepto",
+            url: "https://www.zepto.com/product/ladoo",
+            image: "/assets/zepto-logo.png",
+            unoptimized: false,
+          },
+          {
+            id: "flipkart-ladoo",
+            name: "Flipkart",
+            url: "https://www.flipkart.com/product/ladoo",
+            image: "/assets/flipkart-logo.png",
+            unoptimized: false,
+          },
+        ],
+      },
+      // Add more products as needed
+    ],
   },
 };
 
