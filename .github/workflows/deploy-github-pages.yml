@@ -45,6 +45,18 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          GITHUB_PAGES: 'true'
+
+      - name: Verify build output
+        run: |
+          if [ ! -d "out" ]; then
+            echo "Error: 'out' directory not found. Build may have failed or static export is not enabled."
+            echo "Contents of current directory:"
+            ls -la
+            exit 1
+          fi
+          echo "Build output verified. Contents of 'out' directory:"
+          ls -la out/ | head -20
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
