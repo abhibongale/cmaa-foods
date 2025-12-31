@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { getAssetPath } from "../utils/pathUtils";
 
 // Dynamically import react-player to avoid loading on first paint
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -208,7 +209,7 @@ export default function HeroVideo({
       {!isExternalVideo && (
         <video
           ref={videoRef}
-          src={videoSrc}
+          src={getAssetPath(videoSrc)}
           autoPlay={autoPlay && !prefersReducedMotion()}
           loop={loop}
           muted={muted}
