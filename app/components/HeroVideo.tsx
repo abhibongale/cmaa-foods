@@ -4,6 +4,27 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
+// Type definitions for react-player config
+interface YouTubeConfig {
+  playerVars?: {
+    autoplay?: number;
+    controls?: number;
+    modestbranding?: number;
+    rel?: number;
+    [key: string]: any;
+  };
+}
+
+interface VimeoConfig {
+  playerOptions?: {
+    autoplay?: boolean;
+    controls?: boolean;
+    muted?: boolean;
+    loop?: boolean;
+    [key: string]: any;
+  };
+}
+
 // Dynamically import react-player to avoid loading on first paint
 const ReactPlayer = dynamic(() => import("react-player"), {
   ssr: false,
@@ -241,24 +262,26 @@ export default function HeroVideo({
             width="100%"
             height="100%"
             playsinline
-            config={{
-              youtube: {
-                playerVars: {
-                  autoplay: shouldPlay && isIntersecting ? 1 : 0,
-                  controls: 0,
-                  modestbranding: 1,
-                  rel: 0,
+            config={
+              {
+                youtube: {
+                  playerVars: {
+                    autoplay: shouldPlay && isIntersecting ? 1 : 0,
+                    controls: 0,
+                    modestbranding: 1,
+                    rel: 0,
+                  },
                 },
-              },
-              vimeo: {
-                playerOptions: {
-                  autoplay: shouldPlay && isIntersecting,
-                  controls: false,
-                  muted: muted,
-                  loop: loop,
+                vimeo: {
+                  playerOptions: {
+                    autoplay: shouldPlay && isIntersecting,
+                    controls: false,
+                    muted: muted,
+                    loop: loop,
+                  },
                 },
-              },
-            }}
+              } as any
+            }
             onPlay={handleExternalPlay}
             onPause={handleExternalPause}
             onEnded={handleExternalEnded}
