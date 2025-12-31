@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - master
+      # Uncomment the line below to test on your feature branch
+      # - feat/basic-layout
   workflow_dispatch:
 
 permissions:
@@ -46,7 +48,6 @@ jobs:
         env:
           NODE_ENV: production
           GITHUB_PAGES: 'true'
-          GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           BASE_PATH: ${{ github.event.repository.name }}
 
