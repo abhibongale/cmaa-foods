@@ -46,6 +46,9 @@ jobs:
         env:
           NODE_ENV: production
           GITHUB_PAGES: 'true'
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          BASE_PATH: ${{ github.event.repository.name }}
 
       - name: Verify build output
         run: |
