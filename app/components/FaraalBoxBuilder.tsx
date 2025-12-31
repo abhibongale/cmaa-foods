@@ -41,7 +41,9 @@ export default function FaraalBoxBuilder() {
   const addToBox = async (item: typeof SNACKS[0]) => {
     if (boxItems.length < MAX_CAPACITY) {
       // Add a unique ID so we can have multiple of the same item
-      const newItem = { ...item, uniqueId: `${item.id}-${Date.now()}` };
+      // Use a counter instead of Date.now() to avoid impure function calls
+      const uniqueId = `${item.id}-${boxItems.length}-${Math.random().toString(36).substr(2, 9)}`;
+      const newItem = { ...item, uniqueId };
       setBoxItems((prev) => [...prev, newItem]);
       
       // Trigger a subtle "shake" animation on the box to show feedback

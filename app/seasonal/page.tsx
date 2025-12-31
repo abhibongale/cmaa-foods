@@ -223,8 +223,8 @@ export default function SeasonalPage() {
             Pre-order Seasonal Specials
           </h2>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Don't miss out on your favorite festival treats! Pre-order now and 
-            we'll prepare fresh batches just for you.
+            Don&apos;t miss out on your favorite festival treats! Pre-order now and 
+            we&apos;ll prepare fresh batches just for you.
           </p>
           <Link
             href="/"
