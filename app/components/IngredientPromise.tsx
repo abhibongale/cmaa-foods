@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import Image from "next/image";
+import { getAssetPath } from "../utils/pathUtils";
 
 interface Hotspot {
   id: string;
@@ -32,20 +33,20 @@ export default function IngredientPromise({
   const [selectedProductId, setSelectedProductId] = useState(
     defaultProductId || products[0]?.id
   );
-  const [imageTransform, setImageTransform] = useState({ rotateX: 0, rotateY: 0 });
+  const [imageTransform, setImageTransform] = useState({ translateX: 0 });
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
   const selectedProduct = products.find((p) => p.id === selectedProductId) || products[0];
 
-  // Handle 3D movement on hotspot hover - 100 degree rotation
+  // Handle left-to-right movement on hotspot hover
   const handleHotspotMouseEnter = useCallback(() => {
-    // Rotate 100 degrees on Y-axis
-    setImageTransform({ rotateX: 0, rotateY: 100 });
+    // Move image to the right (positive translateX)
+    setImageTransform({ translateX: 20 });
   }, []);
 
   const handleHotspotMouseLeave = useCallback(() => {
-    // Reset to 0 degrees
-    setImageTransform({ rotateX: 0, rotateY: 0 });
+    // Reset to center
+    setImageTransform({ translateX: 0 });
   }, []);
 
   if (!selectedProduct) {
@@ -78,17 +79,15 @@ export default function IngredientPromise({
         <div 
           ref={imageContainerRef}
           className="relative w-full aspect-square bg-[#F5E6D3] rounded-xl overflow-hidden shadow-lg group"
-          style={{ perspective: "1000px" }}
         >
           <div
             className="relative w-full h-full transition-transform duration-[1500ms] ease-in-out"
             style={{
-              transform: `perspective(1000px) rotateX(${imageTransform.rotateX}deg) rotateY(${imageTransform.rotateY}deg)`,
-              transformStyle: "preserve-3d",
+              transform: `translateX(${imageTransform.translateX}%)`,
             }}
           >
             <Image
-              src={selectedProduct.imageSrc}
+              src={getAssetPath(selectedProduct.imageSrc)}
               alt={selectedProduct.imageAlt}
               fill
               className="object-cover"

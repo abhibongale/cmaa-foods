@@ -151,7 +151,7 @@ export const siteConfig = {
       {
         id: "chivda",
         name: "Chivda",
-        imageSrc: "/assets/chivda.jpg",
+        imageSrc: "/assets/chivda.png",
         imageAlt: "Chivda with ingredient hotspots",
         hotspots: [
           {
@@ -326,8 +326,8 @@ export const siteConfig = {
 
   productLinks: {
     active: true, // Set to false to hide this section
-    title: "Order Now",
-    subtitle: "Click on any product to see where you can order it",
+    title: "Order your favorite Faral",
+    subtitle: "Click on any product to get this homemade snacks with authentic taste at your doorstep",
     products: [
       {
         id: "chivda",
@@ -393,7 +393,7 @@ export const siteConfig = {
       },
       {
         id: "Kurkure",
-        name: "Kurkure",
+        name: "Crunchy sticks",
         imageSrc: "/assets/kurkure.jpg",
         gifSrc: "/assets/kurkure-animation.gif",
         description: "Sweet and savory diamond-shaped snack",
@@ -410,30 +410,6 @@ export const siteConfig = {
             id: "flipkart-shankarpali",
             name: "Flipkart",
             url: "https://www.flipkart.com/product/kurkure",
-            image: "/assets/flipkart-logo.png",
-            unoptimized: false,
-          },
-        ],
-      },
-      {
-        id: "ladoo",
-        name: "Besan Ladoo",
-        imageSrc: "/assets/ladoo.jpg",
-        gifSrc: "/assets/ladoo-animation.gif",
-        description: "Sweet gram flour balls with ghee",
-        unoptimized: false,
-        thirdPartyLinks: [
-          {
-            id: "zepto-ladoo",
-            name: "Zepto",
-            url: "https://www.zepto.com/product/ladoo",
-            image: "/assets/zepto-logo.png",
-            unoptimized: false,
-          },
-          {
-            id: "flipkart-ladoo",
-            name: "Flipkart",
-            url: "https://www.flipkart.com/product/ladoo",
             image: "/assets/flipkart-logo.png",
             unoptimized: false,
           },
